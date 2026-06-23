@@ -1,97 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PW Web Page</title>
+<title>PW Web Page</title>
 </head>
-
-<body style="margin:0; font-family:Arial,sans-serif; background:#f5f7fb;">
-
-    <!-- Navbar -->
-    <div style="background:white; padding:15px 40px; display:flex; justify-content:space-between;">
-
-        <h2>PW</h2>
-
-        <button onclick="login()"
-        style="background:#2f6df6; color:white; border:none; padding:10px 20px; border-radius:5px;">
+<body id="body" style="margin:0; font-family:Arial,sans-serif; background:#f5f7fb; color:black;">
+<div id="navbar" style="background:white; padding:15px 40px; display:flex; justify-content:space-between; align-items:center;">
+<h2 id="logo">PW</h2>
+<div>
+<button onclick="toggleMode()"style="padding:10px 20px; margin-right:10px; border:none; border-radius:5px; cursor:pointer;">
+    Dark Mode
+        </button>
+ <button onclick="login()"
+ style="background:#2f6df6; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
             Login / Register
+        </button>
+    </div>
+
+</div>
+
+<div style="display:flex;">
+
+    <div style="width:50%; padding:60px;">
+
+        <h1>Bharat's Trusted & Affordable <br> Educational Platform</h1>
+
+        <p>
+            Unlock your potential by learning from India's best educators.
+        </p>
+
+        <button onclick="startLearning()"
+        style="background:#2f6df6; color:white; border:none; padding:12px 25px; border-radius:5px;">
+            Get Started
         </button>
 
     </div>
 
-    <!-- Hero Section -->
+    <div style="width:50%; background:#0b2a5b; color:white; padding:60px;">
 
-    <div style="display:flex;">
+        <h2>JEE BATCHES</h2>
 
-        <div style="width:50%; padding:60px;">
+        <input
+        type="text"
+        id="search"
+        placeholder="Explore Here"
+        style="width:250px; height:30px;">
 
-            <h1>Bharat's Trusted & Affordable <br> Educational Platform</h1>
-
-            <p>
-                Unlock your potential by learning from India's best educators.
-            </p>
-
-            <button onclick="startLearning()"
-            style="background:#2f6df6;color:white;border:none;padding:12px 25px;border-radius:5px;">
-                Get Started
-            </button>
-
-        </div>
-
-        <div style="width:50%; background:#0b2a5b; color:white; padding:60px;">
-
-            <h2>JEE BATCHES</h2>
-
-            <input
-            type="text"
-            id="search"
-            placeholder="Explore Here"
-            style="width:250px; height:30px;">
-
-            <button onclick="searchCourse()">
-                Search
-            </button>
-
-        </div>
+        <button onclick="searchCourse()">
+            Search
+        </button>
 
     </div>
 
-    <!-- Categories -->
+</div>
 
-    <h1 style="text-align:center;">Exam Categories</h1>
+<h1 style="text-align:center;">Exam Categories</h1>
 
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px;">
-        
-        <div style="background:white;padding:20px;">
-            <h2>NEET</h2>
-            <button onclick="neet()">Explore</button>
-        </div>
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px;">
 
-        <div style="background:white;padding:20px;">
-            <h2>IIT JEE</h2>
-            <button onclick="jee()">Explore</button>
-        </div>
-
-        <div style="background:white;padding:20px;">
-            <h2>Pre Foundation</h2>
-            <button onclick="preFoundation()">Explore</button>
-        </div>
-
-        <div style="background:white;padding:20px;">
-            <h2>School Boards</h2>
-            <button onclick="boards()">Explore</button>
-        </div>
-
-        <div style="background:white;padding:20px;">
-            <h2>UPSC</h2>
-            <button onclick="upsc()">Explore</button>
-        </div>
-
-        <div style="background:white;padding:20px;">
-            <h2>Govt Job Exams</h2>
-            <button onclick="govtJob()">Explore</button>
-        </div>
-
+    <div class="card" style="background:white; padding:20px;">
+        <h2>NEET</h2>
+        <button onclick="neet()">Explore</button>
     </div>
+
+    <div class="card" style="background:white; padding:20px;">
+        <h2>IIT JEE</h2>
+        <button onclick="jee()">Explore</button>
+    </div>
+
+    <div class="card" style="background:white; padding:20px;">
+        <h2>Pre Foundation</h2>
+        <button onclick="preFoundation()">Explore</button>
+    </div>
+
+    <div class="card" style="background:white; padding:20px;">
+        <h2>School Boards</h2>
+        <button onclick="boards()">Explore</button>
+    </div>
+
+    <div class="card" style="background:white; padding:20px;">
+        <h2>UPSC</h2>
+        <button onclick="upsc()">Explore</button>
+    </div>
+
+    <div class="card" style="background:white; padding:20px;">
+        <h2>Govt Job Exams</h2>
+        <button onclick="govtJob()">Explore</button>
+    </div>
+
+</div>
 
 <script>
 
@@ -100,10 +96,12 @@ function login()
     alert("Welcome to PW!");
 }
 
+
 function startLearning()
 {
     alert("Let's Start Learning!");
 }
+
 
 function searchCourse()
 {
@@ -147,6 +145,50 @@ function upsc()
 function govtJob()
 {
     alert("Opening Government Job Exams Category");
+}
+
+
+var dark = false;
+
+function toggleMode()
+{
+    var body = document.getElementById("body");
+    var navbar = document.getElementById("navbar");
+    var logo = document.getElementById("logo");
+    var cards = document.getElementsByClassName("card");
+
+    if(dark==false)
+    {
+        body.style.background="#1e1e1e";
+        body.style.color="white";
+
+        navbar.style.background="#333";
+        logo.style.color="white";
+
+        for(var i=0;i<cards.length;i++)
+        {
+            cards[i].style.background="#444";
+            cards[i].style.color="white";
+        }
+
+        dark=true;
+    }
+    else
+    {
+        body.style.background="#f5f7fb";
+        body.style.color="black";
+
+        navbar.style.background="white";
+        logo.style.color="black";
+
+        for(var i=0;i<cards.length;i++)
+        {
+            cards[i].style.background="white";
+            cards[i].style.color="black";
+        } 
+
+        dark=false;
+    }
 }
 
 </script>
